@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.escola.turma.model.Turma;
+import com.escola.turma.model.Aluno;
 
 @Repository
-public interface TurmaRepository extends JpaRepository<Turma, Long> {
+public interface AlunoRepository extends JpaRepository<Aluno, Long> {
 	
-	public List<Turma> findAllByTipoTurmaContainingIgnoreCase (String tipoTurma);
+	public List<Aluno> findAllByNomeContainingIgnoreCase (String nome);
 
 }

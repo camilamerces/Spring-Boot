@@ -15,23 +15,23 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 @Entity
-@Table(name = "tb_turma")
-public class Turma {
+@Table(name = "tb_aluno")
+public class Aluno {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	@NotNull
-	private String tipoTurma;
+	private String nome;
 	
-	private boolean ativo;
+	private boolean matriculado;
 	
-	@OneToMany(mappedBy = "turma", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("turma")
-	private List<Aluno> aluno;
+	@ManyToOne
+	@JsonIgnoreProperties("aluno")
+	private Turma turma;
 
-
+	
 	public long getId() {
 		return id;
 	}
@@ -40,28 +40,28 @@ public class Turma {
 		this.id = id;
 	}
 
-	public String getTipoTurma() {
-		return tipoTurma;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setTipoTurma(String tipoTurma) {
-		this.tipoTurma = tipoTurma;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public boolean isAtivo() {
-		return ativo;
+	public boolean isMatriculado() {
+		return matriculado;
 	}
 
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
+	public void setMatriculado(boolean matriculado) {
+		this.matriculado = matriculado;
 	}
 	
-	public List<Aluno> getAluno() {
-		return aluno;
+	public Turma getTurma() {
+		return turma;
 	}
 
-	public void setAluno(List<Aluno> aluno) {
-		this.aluno = aluno;
+	public void setTurma(Turma turma) {
+		this.turma = turma;
 	}
 
 
